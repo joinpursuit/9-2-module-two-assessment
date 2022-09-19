@@ -1,0 +1,25 @@
+{
+  "name": "module-two-final",
+  "version": "1.0.0",
+  "description": "Create an app using the [Studio Ghibli API](https://ghibliapi.herokuapp.com/#) that allows users to view and review each movie.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joinpursuit/Pursuit-Core-Module-Two-Final-Assessment.git"
+  },
+  "author": "Corey Ladovsky, Wes Reid, Karolin Rafalski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joinpursuit/Pursuit-Core-Module-Two-Final-Assessment/issues"
+  },
+  "homepage": "https://github.com/joinpursuit/Pursuit-Core-Module-Two-Final-Assessment#readme",
+  "devDependencies": {
+    "cypress": "^9.5.0",
+    "cypress-watch-and-reload": "^1.7.4",
+    "fast-glob": "^3.2.5",
+    "node-fetch": "^2.6.1"
+  }
+}
