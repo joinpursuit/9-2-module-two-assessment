@@ -13,4 +13,14 @@ body {
 header { 
     width:75%;
     background-color: skyblue;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 10px;
+    box-sizing: border-box
 }
+
+.ghibli-logo{
+    height:100%;
+    display:block;
+}
+
