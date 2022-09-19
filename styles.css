@@ -1,13 +1,27 @@
 body {
     background-color: lavender;
     font-family: monospace;
+    margin: 70px;
 }
 
 header{
     background-color: skyblue;
-    width: 75%;
-    height:75%;
+    margin:auto;
+    /* grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr 1fr ; */
+    
 }
+
+img{
+text-align: left;
+width:300px;
+height:auto;}
+
+.y{
+    text-align: right;
+}
+
+/* MAIN GRID  */
 
 main{
 
@@ -34,3 +48,4 @@ main{
 .e{
    grid-area: 5/1/6/2;
 }
+/* MAIN gRID */
