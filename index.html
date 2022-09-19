@@ -6,9 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bo's Ghibli Review App</title>
     <link rel="stylesheet" href="./styles.css">
+    <script src="./main.js" defer></script>
 </head>
 <body>
-     
-    <script src="./main.js"></script>
+    <header>
+        <img src="./images/ghibli-logo.png" alt="ghibli logo">
+        <h1>Ghibli Review App</h1>
+    </header>
+    <main>
+        <section class="select-section">
+            <h2>Select a movie</h2>
+            <select name="titles" id="titles">
+                <option value=""></option>
+            </select>
+        </section>
+        <section class="add-review-section">
+            <h2>Add a review</h2>
+            <form>
+                <label for="review">Your Review</label>
+                <input type="text" id="review">
+                <input type="submit">
+            </form>
+        </section>
+        <section class="movie-details-section">
+            <h2>Movie Details</h2>
+            <div class="display-info"></div>
+        </section>
+        <section class="people-section">
+            <h2>People</h2>
+            <ol id="peopleList"></ol>
+            <button id="show-people">Show People</button>
+        </section>
+        <section id="reviews" class="reviews-section">
+            <h2>Reviews</h2>
+            <ul class="reviews-list"></ul>
+            <button id="reset-reviews">Reset Reviews</button>
+        </section>
+    </main>
+  
 </body>
 </html>
