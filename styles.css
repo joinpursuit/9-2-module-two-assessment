@@ -13,10 +13,10 @@ body {
 header { 
     width:75%;
     background-color: skyblue;
-    height: 200px;
+    height: 180px;
     margin: 0 auto;
     margin-top: 10px;
-    box-sizing: border-box
+    position:relative;    
 }
 
 .ghibli-logo{
@@ -24,3 +24,8 @@ header {
     display:block;
 }
 
+.header-title { 
+    position:absolute;
+    top:0;
+    right:20px;
+}
