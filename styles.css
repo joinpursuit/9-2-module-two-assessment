@@ -2,3 +2,16 @@ body {
     background-color: lavender;
     font-family: monospace;
 }
+
+header {
+    width: 75%;
+    background-color: skyblue;
+}
+
+
+/* Media Queries */
+@media (max-width: 500px) {
+    section#reviews {
+        display: none;
+    }
+}
