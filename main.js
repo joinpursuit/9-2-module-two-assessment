@@ -8,6 +8,7 @@
 
 function run() {
  // Add code you want to run on page load here
+ 
 }
 
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
