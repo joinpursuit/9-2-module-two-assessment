@@ -22,7 +22,7 @@ describe("Initial Layout", () => {
       cy.get("h1").should("exist").should("have.text", "Ghibli Review App");
     });
   });
-  it("Has a main element, with 4 section elements inside", () => {
+  it("Has a main element, with 5 section elements inside", () => {
     cy.get("main").within(() => {
       cy.get("section").should("have.length", 5);
     });
