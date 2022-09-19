@@ -29,14 +29,18 @@ function handleSelectValueChange() {
     const filmByID = `https://ghibliapi.herokuapp.com/films/${filmID}`;
     fetch(filmByID)
       .then((res) => res.json())
-      .then((film) => showMovieDetails(film));
+      .then((film) => showMovieDetails(film))
+      .catch((err) => console.log(err));
   });
 }
 handleSelectValueChange();
 
 function showMovieDetails(film) {
   console.log(film);
+  const movieTitle = document.querySelector(".movie-title");
+
   const displayDiv = document.querySelector(".display-info");
+  movieTitle.textContent = film.title;
   displayDiv.innerText = film.description;
 }
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
