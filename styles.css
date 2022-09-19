@@ -13,7 +13,7 @@ body {
 header { 
     width:75%;
     background-color: skyblue;
-    height: 180px;
+    height: 150px;
     margin: 0 auto;
     margin-top: 10px;
     position:relative;    
@@ -28,4 +28,9 @@ header {
     position:absolute;
     top:0;
     right:20px;
+}
+
+section { 
+    width:75%;
+    margin:0 auto;
 }
