@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+    
+    <!-- grid div 75% width -->
+<header>
+<img src="images/ghibli-logo.png">
+<h1>Ghibli Review App</h1>
+</header>
+<!-- HEader -->
+
+<!-- MAIN -->
+<main>
+    <!-- INSIDE MAIN:1st Section BELOW -->
+<section>
+<h2>Ghibli Review App</h2>
+
+<label for="titles-select">Select a movie::</label>
+
+<select id="titles-select">
+    <option value="">--Please choose an option--</option>
+           <!-- /HERE we will create 'option' element and appendchild to populate using for loop -->
+</select>
+</section>
+<!-- INSIDE MAIN:1st Section ABOVE -->
+
+<!-- INSIDE MAIN:2nd SECTION BELOW-->
+<section>
+<h2>Add a review</h2>
+<form>
+<label for="review">Your review</label>
+<input type="text" id="review">
+<input type="submit">
+</form>
+
+</section>
+<!-- INSIDE MAIN: 2nd Section Above -->
+
+<!-- Inside MAIN:3rd Section Below -->
+<section>
+<h2>Movie details</h2>
+<div id="display-info"></div>
+<!-- h3> -->
+<!-- p -->
+<!-- p -->
+</section>
+<!-- Inside MAIN:3rd Section Above -->
+
+<!-- Inside MAIN:4rd Section BELOW -->
+<section>
+    <h2>People</h2>
+    <ol>
+
+    </ol>
+    <button id="show-people">Show People</button>
+</section>
+<!-- Inside MAIN:4rd Section Above -->
+
+<!-- INSIDE MAIN: section 5 BELOW -->
+<section id="reviews">
+<h2>Reviews</h2>
+<ul>
+    <!-- li will be added -->
+</ul>
+<button id="reset-reviews">Reset Reviews</button>
+</section>
+
+<!-- INSIDE MAIN: section 5 ABOVE-->
+</main>
+<!-- MAIN -->
+
+
+
+    <script src="main.js"></script>
+</body>
+
+
+</html>
