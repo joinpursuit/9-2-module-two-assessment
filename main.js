@@ -15,9 +15,8 @@ function injectOptionElements(films) {
   console.log(films);
   for (let film of films) {
     const option = document.createElement("option");
-    option.id = film.id;
     option.textContent = film.title;
-    option.setAttribute("value", option.title);
+    option.setAttribute("value", film.id);
     select.append(option);
   }
 }
