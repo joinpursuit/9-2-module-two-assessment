@@ -39,9 +39,17 @@ handleSelectValueChange();
 function showMovieDetails(film) {
   console.log(film);
   const movieTitle = document.querySelector(".movie-title");
-  const displayDiv = document.querySelector(".display-info");
+  const displayDiv = document.querySelector("#display-info");
+  displayDiv.innerHTML = "";
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  p1.textContent = film.title;
+  p2.textContent = film.release_date;
+  p3.textContent = film.description;
+
   movieTitle.textContent = film.title;
-  displayDiv.innerText = film.description;
+  displayDiv.append(p1, p2, p3);
 }
 
 function handleReviewSubmit() {
@@ -63,8 +71,8 @@ function handleReviewSubmit() {
     const reviewList = document.querySelector(".reviews-list");
     const li = document.createElement("li");
     const strong = document.createElement("strong");
-    strong.textContent = document.querySelector(".movie-title").innerText;
-    li.innerText = ": " + review;
+    strong.textContent = document.querySelector(".movie-title").innerText + ":";
+    li.innerText = " " + review;
     li.prepend(strong);
     reviewList.append(li);
   });
