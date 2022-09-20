@@ -3,6 +3,7 @@
 function run() {
   const base_url = "https://ghibliapi.herokuapp.com/films";
   const select = document.querySelector("#titles");
+  const display_info = document.querySelector("#display-info");
 
   fetch(base_url)
     .then((res) => res.json())
@@ -12,12 +13,42 @@ function run() {
       for (let d of data) {
         const option = document.createElement("option");
         option.setAttribute("value", d.id);
-        console.log(option.value);
+        // console.log(option.value);
         option.textContent = d.title;
         select.append(option);
       }
     })
     .catch((err) => console.log(err));
+
+  select.addEventListener("change", (event) => {
+    event.preventDefault();
+
+    fetch(base_url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        const movieTitle = document.createElement("h3");
+        console.log(movieTitle);
+
+        const releaseYear = document.createElement("p");
+        const description = document.createElement("p");
+
+        display_info.innerHTML = "";
+
+        for (let d of data) {
+          if (select.value === d.id) {
+            movieTitle.textContent = d.title;
+            // console.log(movieTitle);
+            releaseYear.textContent = d.release_date;
+            description.textContent = d.description;
+            // console.log(description);
+            display_info.append(movieTitle, releaseYear, description);
+          }
+        }
+      })
+    .catch((err) => console.log(err));
+  });
 }
 
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
