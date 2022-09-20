@@ -15,7 +15,7 @@ let titleIDARRAY =[]
 let reviewtitleARR=[]
 let apiFETCH = "https://ghibliapi.herokuapp.com/films/"
 
- fetch(apiFETCH)
+ let result = fetch(apiFETCH)
 .then((response) => response.json()).then((data) => {
 
     for(element of data){
@@ -154,9 +154,34 @@ ul2.textContent =""
 let resetreviews = document.querySelector("#reset-reviews")
 resetreviews.addEventListener("click",deleteallreviews)
 
+})
 
+    let oltag = document.querySelector("ol")
 
+function peopleGENERATOR(event) {
+event.preventDefault()
+fetch('https://ghibliapi.herokuapp.com/people/').then((response3) => response3.json()).then((data3) => {
+    oltag.innerHTML=""
+    for(let i=0;i<data3.length;i++){
+    oltag.innerHTML+=`<li>${data3[i].name}</li>`
+}
 }).catch((error) => {
+    console.log(error)
+  }) 
+}
+
+let peoplebutton = document.getElementById("show-people")
+
+peoplebutton.addEventListener("click",peopleGENERATOR)
+
+
+
+
+
+
+
+
+result.catch((error) => {
     // let reviewinnertext = document.getElementById("review")
     // let formrev = document.getElementById("form")
 
@@ -166,8 +191,9 @@ resetreviews.addEventListener("click",deleteallreviews)
 
     console.log(error)
   }) 
-
+  
 }
+
 
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
 // So that testing can work as expected for now
