@@ -22,6 +22,7 @@ function injectOptionElements(films) {
   }
 }
 
+// select feature
 function handleSelectValueChange() {
   select.addEventListener("change", (e) => {
     console.log(e.target.value);
@@ -38,11 +39,37 @@ handleSelectValueChange();
 function showMovieDetails(film) {
   console.log(film);
   const movieTitle = document.querySelector(".movie-title");
-
   const displayDiv = document.querySelector(".display-info");
   movieTitle.textContent = film.title;
   displayDiv.innerText = film.description;
 }
+
+function handleReviewSubmit() {
+  const reviewForm = document.querySelector("#review-form");
+  reviewForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // if no movie is selected, alert
+    if (!select.value) {
+      alert("Please select a movie first");
+      return;
+    }
+
+    // if selected, get user input
+    console.log(e.target.review.value);
+    const review = e.target.review.value;
+    e.target.review.value = "";
+
+    // then show review
+    const reviewList = document.querySelector(".reviews-list");
+    const li = document.createElement("li");
+    const strong = document.createElement("strong");
+    strong.textContent = document.querySelector(".movie-title").innerText;
+    li.innerText = ": " + review;
+    li.prepend(strong);
+    reviewList.append(li);
+  });
+}
+handleReviewSubmit();
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
 // So that testing can work as expected for now
 // A non-hacky solution is being researched
