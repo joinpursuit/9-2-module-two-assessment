@@ -144,6 +144,18 @@ formrev.addEventListener("submit",reviews)
 div.textContent = ""
 
 
+
+function deleteallreviews(event){
+    event.preventDefault()
+    let ul2 = document.querySelector("ul")
+ul2.textContent =""
+}
+
+let resetreviews = document.querySelector("#reset-reviews")
+resetreviews.addEventListener("click",deleteallreviews)
+
+
+
 }).catch((error) => {
     // let reviewinnertext = document.getElementById("review")
     // let formrev = document.getElementById("form")
