@@ -1,0 +1,10 @@
+body {
+    background: rgb(230, 230, 250);
+    font-family: monospace;
+}
+
+@media only screen and (max-width: 500px) {
+    #reviews{
+        display: none;
+    }
+}
