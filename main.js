@@ -1,15 +1,12 @@
-// To ensure Cypress tests work as expeded, add any code/functions that you would like to run on page load inside this function
 function run() {
   // Add code you want to run on page load here
   const select = document.querySelector("select");
   const collection = [];
-  const review = document.querySelector("input[type=submit]");
-  const reset = document.querySelector("button");
-  const people = document.querySelector("#show-people");
 
   fetch("https://ghibliapi.herokuapp.com/films/")
     .then((response) => response.json())
     .then((json) => {
+      console.log(json);
       json.forEach((movie) => {
         let newOpt = document.createElement("option");
         newOpt.value = `${movie.id}`;
@@ -28,12 +25,13 @@ function run() {
       });
     })
     .catch((error) => {
+      // You can do what you like with the error here.
       console.log(error);
     });
 
   let tmp = "";
   function modifyText() {
-    if (!!select.options[select.selectedIndex].innerText === "") {
+    if (!!select.options[select.selectedIndex].innerText) {
       tmp = collection.filter(
         (movie) =>
           movie.title === select.options[select.selectedIndex].innerText
@@ -41,13 +39,16 @@ function run() {
       document.getElementById(
         "display-info"
       ).innerHTML = `<h3>${tmp[0].title}</h3> <p>${tmp[0].year}
-    </p><p>${tmp[0].desc}</p>`;
+      </p><p>${tmp[0].desc}</p>`;
     }
   }
 
   // Add event listener to table
   const el = document.querySelector("select");
   el.addEventListener("input", modifyText, false);
+  const review = document.querySelector("input[type=submit]");
+  const reset = document.querySelector("button");
+  const people = document.querySelector("#show-people");
 
   review.addEventListener("click", (event) => {
     event.preventDefault();
