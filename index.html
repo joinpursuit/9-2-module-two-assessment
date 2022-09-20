@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <script src="main.js" defer></script>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <header>
+        <div>
+            <img src="ghibli-logo.png"/>
+            <h1>Ghibli Review App</h1>
+        </div>
+    </header>
+
+    <body style="background-color:lavender;">
+        <section class="search-grid">
+            <h2>Select a movie</h2>
+            <select name="titles" id="titles">
+                <option value=""></option>
+            </select>
+        </section>   
+            
+        <section>
+            <h2>Add a review</h2>
+            <form>
+                <label for="review">Your review</label>
+                <input id="review" type="text" />
+                <input type="submit" />
+            </form>
+        </section>
+        <section>
+            <h2>Movie review</h2>
+            <div id="display-info">
+                <h3></h3>
+                <p></p>
+                <p></p>
+            </div>
+        </section>
+        <section>
+            <h2>People</h2>
+            <ol>
+            
+                 <button id="show-people" type="text">Show people</button>
+                
+            </ol>
+        </section>
+        <section>
+            <h2>Reviews</h2>
+            <ul>
+                <button id="reset-reviews" type+"text">Reset Reviews</button>
+            </ul>
+        </section>
+
+    </body>
+</html>
