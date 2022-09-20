@@ -61,6 +61,13 @@ function run() {
     // clear text input after adding
     document.querySelector("#review").value = "";
   });
+
+  // Add functionality to reset reviews button
+  const button = document.querySelector("#reset-reviews");
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    ul.innerHTML = "";
+  });
 }
 
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
