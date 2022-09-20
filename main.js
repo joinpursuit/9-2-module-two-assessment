@@ -9,17 +9,18 @@
 function run() {
  // Add code you want to run on page load here
 let titleIDARRAY =[]
+let reviewtitleARR=[]
 let apiFETCH = "https://ghibliapi.herokuapp.com/films/"
 
  fetch(apiFETCH)
 .then((response) => response.json()).then((data) => {
 
     for(element of data){
-        console.log(element)
+        // console.log(element)
 let optionyay = document.createElement("option")
 optionyay.setAttribute("value", `${element.id}`)
 optionyay.setAttribute("id", `${element.id}`)
-console.log(element.id)
+// console.log(element.id)
 optionyay.textContent=`${element.title}`
 document.querySelector("#titles-select").append(optionyay)
     }
@@ -76,11 +77,10 @@ function rendertext(event){
     event.preventDefault();
 
 
-
     titleIDARRAY=[]
-console.log(displayinfo)
+// console.log(displayinfo)
 
-    console.log(this.options.selectedIndex-1)
+    // console.log(this.options.selectedIndex-1)
     for (element of data){
         titleIDARRAY.push(element)
     // titleIDARRAY[this.options.selectedIndex.id]
@@ -88,6 +88,7 @@ console.log(displayinfo)
     // titleIDARRAY[this.options.selectedIndex].title
 
 console.log(titleIDARRAY[this.options.selectedIndex-1].title)
+reviewtitleARR.push(titleIDARRAY[this.options.selectedIndex-1].title)
     // let h3 = document.createElement("h3");
 h3.textContent=""
 ptag1.textContent=""
@@ -99,6 +100,7 @@ ptag2.textContent=""
     // let ptag2 = document.createElement("p")
     ptag2.textContent=`${titleIDARRAY[this.options.selectedIndex-1].description}`
     sectionC.append(h3,ptag1,ptag2)
+    console.log(reviewtitleARR)
 }
 
 
@@ -107,19 +109,28 @@ titleselect.addEventListener("change",  rendertext)
 
         
 
+let reviewinnertext = document.getElementById("review")
+
+function reviews(event){
+ event.preventDefault()
+let ul = document.querySelector("ul")
+ul.innerHTML += `<li><strong>${reviewtitleARR[reviewtitleARR.length-1]}</strong>: ${reviewinnertext.value}</li>`
+
+// let ul = document.querySelector("ul")
+// let reviewv = document.querySelector("#review")
+// let reviewvalue = reviewv.value
+   
+// let li = document.createElement("li");
+// let thereview = `<li><strong>${reviewtitleARR[reviewtitleARR.length-1]}</strong>:${reviewvalue}</li>`
+// ul.innerHTML=thereview;
+// console.log()
+// }
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+let formrev = document.getElementById("form")
+let button = document.getElementById("button")
+formrev.addEventListener("submit",reviews)
 
 
 
