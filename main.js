@@ -70,6 +70,15 @@ function handleReviewSubmit() {
   });
 }
 handleReviewSubmit();
+
+function handleResetReviews() {
+  const deleteBtn = document.querySelector("#reset-reviews");
+  deleteBtn.addEventListener("click", () => {
+    const reviewsList = document.querySelector(".reviews-list");
+    reviewsList.innerHTML = "";
+  });
+}
+handleResetReviews();
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
 // So that testing can work as expected for now
 // A non-hacky solution is being researched
