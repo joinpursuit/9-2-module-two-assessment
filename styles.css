@@ -29,7 +29,9 @@ main{
     grid-template-rows: repeat(5, 1fr);
 
 }
-
+ul{
+    display:block;
+}
 
 .a {
     grid-area: 1/1/2/2;
@@ -49,3 +51,10 @@ main{
    grid-area: 5/1/6/2;
 }
 /* MAIN gRID */
+
+
+@media (max-width: 500px) {
+ul {
+    display:none
+}
+}
