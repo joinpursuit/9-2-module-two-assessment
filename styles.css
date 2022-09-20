@@ -1,0 +1,19 @@
+body {
+    background-color: lavender;
+    font-family: monospace;
+}
+
+header {
+    width: 75%;
+    color:skyblue;
+}
+
+@media screen  and (max-width: 500px) {
+    #reviews {
+        display:none;
+    }
+}
+
+span {
+    font-weight: bold;
+}
