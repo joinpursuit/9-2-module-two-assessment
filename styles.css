@@ -1,3 +1,15 @@
+@media (max-width: 500px) {
+  #reviews {
+    display: none;
+  }
+}
+
+@media (min-width: 501px) {
+  #reviews {
+    display: block;
+  }
+}
+
 body {
   background-color: #e6e6fa;
   font-family: monospace;
