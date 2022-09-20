@@ -1,10 +1,8 @@
 // To ensure Cypress tests work as expeded, add any code/functions that you would like to run on page load inside this function
-
 function run() {
   // Add code you want to run on page load here
   const select = document.querySelector("select");
   const collection = [];
-  let currentMovie = select.options[select.selectedIndex].innerText;
 
   fetch("https://ghibliapi.herokuapp.com/films/")
     .then((response) => response.json())
