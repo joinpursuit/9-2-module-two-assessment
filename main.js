@@ -7,6 +7,9 @@
 // To ensure Cypress tests work as expeded, add any code/functions that you would like to run on page load inside this function
 
 function run() {
+let form = document.getElementById("form")
+        let div = document.createElement("div")
+form.after(div)
  // Add code you want to run on page load here
 let titleIDARRAY =[]
 let reviewtitleARR=[]
@@ -87,7 +90,7 @@ function rendertext(event){
     }
     // titleIDARRAY[this.options.selectedIndex].title
 
-console.log(titleIDARRAY[this.options.selectedIndex-1].title)
+// console.log(titleIDARRAY[this.options.selectedIndex-1].title)
 reviewtitleARR.push(titleIDARRAY[this.options.selectedIndex-1].title)
     // let h3 = document.createElement("h3");
 h3.textContent=""
@@ -113,9 +116,15 @@ let reviewinnertext = document.getElementById("review")
 
 function reviews(event){
  event.preventDefault()
+ let dropdown = document.getElementById("titles-select")
+if(dropdown.selectedIndex===0){
+div.innerText = "Please select a movie first"
+}
+else{
+    div.innerText = ""
 let ul = document.querySelector("ul")
 ul.innerHTML += `<li><strong>${reviewtitleARR[reviewtitleARR.length-1]}</strong>: ${reviewinnertext.value}</li>`
-
+}
 // let ul = document.querySelector("ul")
 // let reviewv = document.querySelector("#review")
 // let reviewvalue = reviewv.value
@@ -132,10 +141,17 @@ let formrev = document.getElementById("form")
 let button = document.getElementById("button")
 formrev.addEventListener("submit",reviews)
 
+div.textContent = ""
 
 
 }).catch((error) => {
-   
+    // let reviewinnertext = document.getElementById("review")
+    // let formrev = document.getElementById("form")
+
+//     formrev.after(div);
+// div.textContent = ""
+// div.innerText = "Please select a movie first"
+
     console.log(error)
   }) 
 
