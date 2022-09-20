@@ -3,11 +3,13 @@ function run() {
   // Add code you want to run on page load here
   const select = document.querySelector("select");
   const collection = [];
+  const review = document.querySelector("input[type=submit]");
+  const reset = document.querySelector("button");
+  const people = document.querySelector("#show-people");
 
   fetch("https://ghibliapi.herokuapp.com/films/")
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
       json.forEach((movie) => {
         let newOpt = document.createElement("option");
         newOpt.value = `${movie.id}`;
@@ -26,15 +28,12 @@ function run() {
       });
     })
     .catch((error) => {
-      // You can do what you like with the error here.
       console.log(error);
     });
 
   let tmp = "";
   function modifyText() {
-    if (select.options[select.selectedIndex].innerText === "") {
-      ("");
-    } else {
+    if (!!select.options[select.selectedIndex].innerText === "") {
       tmp = collection.filter(
         (movie) =>
           movie.title === select.options[select.selectedIndex].innerText
@@ -49,9 +48,6 @@ function run() {
   // Add event listener to table
   const el = document.querySelector("select");
   el.addEventListener("input", modifyText, false);
-  const review = document.querySelector("input[type=submit]");
-  const reset = document.querySelector("button");
-  const people = document.querySelector("#show-people");
 
   review.addEventListener("click", (event) => {
     event.preventDefault();
