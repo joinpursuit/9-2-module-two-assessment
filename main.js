@@ -21,17 +21,18 @@ function run() {
           id: movie.id,
           year: movie.release_date,
           desc: movie.description,
-          people: movie.people,
+          people: movie.people.map((person) =>
+            person.replace("https://ghibliapi.herokuapp.com/people/", "")
+          ),
         });
       });
     })
-
     .catch((error) => {
       // You can do what you like with the error here.
       console.log(error);
     });
+
   let tmp = "";
-  // Function to change the content of t2
   function modifyText() {
     if (select.options[select.selectedIndex].innerText === "") {
       ("");
@@ -46,10 +47,6 @@ function run() {
     </p><p>${tmp[0].desc}</p>`;
     }
   }
-
-  // An `h3` with the movie's title appear in the display-info section of the page.
-  // A `p` with the movie's release year.
-  // A `p` with the description of the movie.
 
   // Add event listener to table
   const el = document.querySelector("select");
@@ -79,36 +76,19 @@ function run() {
 
   people.addEventListener("click", (event) => {
     event.preventDefault();
-    // console.log(tmp[0].people.length);
-    // console.log(tmp[0].people);
-    if (tmp[0].people.length <= 1) {
-      fetch("https://ghibliapi.herokuapp.com/people/")
-        .then((response) => response.json())
-        .then((json) => {
-          let ol = document.createElement("ol");
-          people.after(ol);
-
-          json.forEach((person) => {
+    let ol = document.createElement("ol");
+    people.after(ol);
+    fetch("https://ghibliapi.herokuapp.com/people/")
+      .then((response) => response.json())
+      .then((json) => {
+        json.forEach((person) => {
+          if (tmp[0].people.includes(person.id)) {
             let li = document.createElement("li");
             li.innerText = person.name;
             ol.append(li);
-          });
-        });
-    } else {
-      Promise.all(
-        tmp[0].people.map((url) => {
-          return fetch(`${url}`).then((response) => response.json());
-        })
-      ).then((reponse) => {
-        let ol = document.createElement("ol");
-        people.after(ol);
-        reponse.forEach((person) => {
-          let li = document.createElement("li");
-          li.innerText = person.name;
-          ol.append(li);
+          }
         });
       });
-    }
   });
 }
 
