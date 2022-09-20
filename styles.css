@@ -1,0 +1,58 @@
+body {
+    display: grid;
+    grid-template-columns: 0.3fr 1.7fr;
+    grid-template-rows: 0.3fr 1.7fr;
+    gap: 0px;
+
+    background-color: lavender;
+    font-family: monospace;
+}
+
+.header {
+    background-color: skyblue;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+
+    display: grid;
+    grid-template-columns: 15% 85%;
+    position: relative;
+}
+
+.header h1 {
+    text-align: right;
+    max-width: 75%;
+}
+
+header img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.main {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    padding-top: 20px;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    overflow: hidden;
+    gap: 20px;
+}
+
+#movie-selector {
+    grid-row: 1 / 2;
+}
+
+#reviews {
+    display: block;
+}
+
+@media only screen and (max-width: 500px) {
+    #reviews {
+        display: none;
+    }
+}
+
+#people-list {
+    display: none;
+}

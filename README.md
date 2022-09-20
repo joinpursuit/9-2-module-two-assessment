@@ -70,10 +70,10 @@ You will only need to make one API call in your application to receive all movie
 
 While it does not need to look exactly the same, it should include the following:
 
-- [ ] `body`
+- [x] `body`
 
-  - [ ] The page's background should be the color `lavender`.
-  - [ ] All non-input text should be of the font `monospace`.
+  - [x] The page's background should be the color `lavender`.
+  - [x] All non-input text should be of the font `monospace`.
 
 - `header`
 
@@ -84,15 +84,15 @@ While it does not need to look exactly the same, it should include the following
 
 - [ ] `main`
 
-  - [ ] `section`
-    - [ ] `h2`: `Select a movie`
-    - [ ] `select` `id` `titles`: starts with one `option` (blank, no value), remaining `option`s will be populated with the movie titles from the API
-  - [ ] `section`
-  - [ ] `h2`: `Add a review`
-    - [ ] `form`
-      - [ ] `label`, `for` = `review`: `Your review`
-      - [ ] `input`, `id` = `review`: type text
-      - [ ] `input`: type submit
+  - [x] `section`
+    - [x] `h2`: `Select a movie`
+    - [x] `select` `id` `titles`: starts with one `option` (blank, no value), remaining `option`s will be populated with the movie titles from the API
+  - [x] `section`
+  - [x] `h2`: `Add a review`
+    - [x] `form`
+      - [x] `label`, `for` = `review`: `Your review`
+      - [x] `input`, `id` = `review`: type text
+      - [x] `input`: type submit
   - [ ] `section`
 
     - [ ] `h2`: `Movie details`
