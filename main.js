@@ -15,7 +15,6 @@ function run() {
         option.after(newOpt);
         collection.push({
           title: movie.title,
-          id: movie.id,
           year: movie.release_date,
           desc: movie.description,
           people: movie.people.map((person) =>
