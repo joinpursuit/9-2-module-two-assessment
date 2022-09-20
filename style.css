@@ -2,17 +2,32 @@ header {
     background-color: skyblue;
     width:75%;
     align-items: center;
-    }
+    justify-content: space-between;
+}
 
 h1{
     font-family: monospace;
-    position: relative;
     top:-16px;
     right: -706px;
-
-    ;
+    font-size: 40px;
+    position:relative;
 }
 
 h2 {
     font-family: monospace;
 }
+
+.search-grid{
+    display:grid;
+    grid-template-columns:15%;
+}
+
+
+.submit {
+    border-radius: 5px;
+}
+button {
+    border-radius: 5px;
+}
+    
+
