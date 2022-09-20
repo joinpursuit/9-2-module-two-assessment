@@ -4,6 +4,8 @@ function run() {
   // Add code you want to run on page load here
   let filmsArray;
   const selectElement = document.querySelector("#titles");
+  const displayDiv = document.querySelector("#display-info");
+  let film;
 
   fetch("https://ghibliapi.herokuapp.com/films")
     .then((response) => response.json())
@@ -31,14 +33,33 @@ function run() {
     const h3 = document.createElement("h3");
     const pMovieRelease = document.createElement("p");
     const pMovieDescription = document.createElement("p");
-    let film = filmsArray[event.target.value];
-    h3.innerText = film.title;
-    pMovieRelease.innerText = film.release_date;
-    pMovieDescription.innerText = film.description;
-    console.log(event.target.value);
-    document
-      .querySelector("#display-info")
-      .append(h3, pMovieRelease, pMovieDescription);
+    film = filmsArray[event.target.value];
+    if (film) {
+      h3.innerText = film.title;
+      pMovieRelease.innerText = film.release_date;
+      pMovieDescription.innerText = film.description;
+      console.log(event.target.value);
+      document
+        .querySelector("#display-info")
+        .append(h3, pMovieRelease, pMovieDescription);
+    }
+  });
+
+  const ul = document.querySelector("ul");
+  // Add an event listener for submit a review form
+  document.querySelector("form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const review = document.querySelector("#review").value;
+    const li = document.createElement("li");
+    if (film) {
+      li.innerHTML = `<strong>${film.title}</strong>: ${review}`;
+      ul.append(li);
+    } else {
+      window.alert("Please select a movie first");
+    }
+
+    // clear text input after adding
+    document.querySelector("#review").value = "";
   });
 }
 
