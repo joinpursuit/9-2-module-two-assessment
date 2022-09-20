@@ -10,15 +10,17 @@ function run() {
   // Add code you want to run on page load here
   fe("https://ghibliapi.herokuapp.com/films",(rst)=>{
     fh['films'] = rst;
-    
     document.querySelector("body").innerHTML="";
     document.querySelector("body").append(
       ce(header_structure()),
       ce(main_structure())
     );
-    // fh["movies_selector"].selectedIndex=1;
-    // on_films_select_change({target:fh["movies_selector"]});
+
+    // fe("https://ghibliapi.herokuapp.com/people",(rst)=>{
+    //   fh['people'] = rst;
+    // })
   })
+
   
 }
 
@@ -48,7 +50,6 @@ function ce(obj){
     }
   return rst;
 }
-
 async function fe(url,cb){
   try {
     const res = await fetch(url);
@@ -68,27 +69,49 @@ function error_handling(error){
 //////public end//////////////////////////
 //////event start//////////////////////////
 function on_show_people_click(evt){
-  fe("https://ghibliapi.herokuapp.com/people",(rst)=>{
-    fh['people_list'].innerHTML = "";
-    fh['people_list'].append(...rst.map(el=>ce({tagname:"li",innerText:el.name})));
-  })
+  function fill_people(){
+    let current_movie_id = fh['films'][fh['movies_selector'].value].id;
+    if(current_movie_id==undefined) {
+      error_handling("select a movie first");
+      return;
+    };
+    fh.people.forEach(el=>{
+      if(el.films.some(sel=>sel.includes(current_movie_id)))
+      {
+        fh['people_list'].append(ce({tagname:"li",innerText:el.name}));
+      }
+    })
+  }
+  fh['people_list'].innerHTML = "No people on show.";
+  if(fh['people']===undefined)
+  {
+    fe("https://ghibliapi.herokuapp.com/people",(rst)=>{
+      fh['people'] = rst;
+      fill_people();
+    })
+  }
+  else
+  {
+    fill_people();
+  }
+  
+  
+  
 }
 function on_films_select_change(evt){
-  // fh['people_list'].innerHTML = "";
-  if(fh["films"][evt.target.value]===undefined){
-    fh['description_title'].innerHTML = "";
-    fh['description_release_years'].innerHTML = "";
-    fh['description_description'].innerHTML = "";
-    return;
+  fh['people_list'].innerHTML = "";
+  if((fh["films"][evt.target.value]||{})["detail"]===undefined)
+  {
+    console.log(fh["films"][evt.target.value]);
   }
-
-  fh['description_title'].innerHTML = fh["films"][evt.target.value].title;
-  fh['description_release_years'].innerHTML = fh["films"][evt.target.value].release_date;
-  fh['description_description'].innerHTML = fh["films"][evt.target.value].description;
+  let {title,release_date,description,image} = fh["films"][evt.target.value]||"";
+  fh['description_img'].setAttribute("src",image||"");
+  fh['description_title'].innerHTML = title||"";
+  fh['description_release_years'].innerHTML = release_date||"";
+  fh['description_description'].innerHTML = description||"";
 }
 function on_review_submit(evt){
   evt.preventDefault();
-  
   if(fh['description_title'].innerText=="")
   {
     error_handling("Please select a movie first");
@@ -98,13 +121,14 @@ function on_review_submit(evt){
   evt.srcElement[0].value = "";
 }
 function on_reset_review(evt){
-  fh['reviews_list'].innerHTML="";
+  fh['reviews_list'].innerHTML = "";
 }
 //////event end//////////////////////////
 //////structure function//////////////////////////
 function header_structure(){
   return {
     tagname:"header",
+    style:"overflow:hidden;",
     ch_:[
       {
         tagname:"img",
@@ -126,7 +150,10 @@ function main_structure(){
         ch_:[
           {tagname:"h2",innerText:"Select a movie",},
           {tagname:"select",
-             ch_:[{tagname:"option",value:"",innerText:""},...fh.films.map((el,idx)=>({tagname:"option",value:idx,innerText:el.title}))],
+             ch_:[
+              {tagname:"option",value:"",innerText:""},
+              ...fh.films.map((el,idx)=>({tagname:"option",value:idx,innerText:el.title}))
+            ],
              event_:{change:on_films_select_change},
              export_:"movies_selector",
           }
@@ -139,7 +166,7 @@ function main_structure(){
             ch_:[
               {tagname:"label",for:"review",},
               {tagname:"input",type:"text",id:"review"},
-              {tagname:"input",type:"submit",}
+              {tagname:"input",type:"submit",value:"Submit review"},
             ]
           }
         ]
@@ -147,11 +174,13 @@ function main_structure(){
       {tagname:"section",
         ch_:[
           {tagname:"h2",innerText:"Movie details",},
+          {tagname:"img",export_:"description_img",style:"width:100%;max-width:640px;margin:auto;",},
           {id:"display-info",
             ch_:[
+              
               {tagname:"h3",export_:"description_title"},
               {tagname:"p",export_:"description_release_years"},
-              {tagname:"p",export_:"description_description"}
+              {tagname:"p",export_:"description_description"},
             ]
           }
         ]
@@ -160,14 +189,14 @@ function main_structure(){
         ch_:[
           {tagname:"h2",innerText:"People",},
           {tagname:"ol",export_:"people_list"},
-          {tagname:"button",innerText:"Show People",id:"show-people",event_:{click:on_show_people_click}}
+          {tagname:"button",innerText:"Show People",id:"show-people",event_:{click:on_show_people_click}},
         ]
       },
       {tagname:"section",id:"reviews",
         ch_:[
           {tagname:"h2",innerText:"Reviews"},
           {tagname:"ul",export_:"reviews_list"},
-          {tagname:"button",innerText:"Reset Reviews",id:"reset-reviews",event_:{"click":on_reset_review}}
+          {tagname:"button",innerText:"Reset Reviews",id:"reset-reviews",event_:{"click":on_reset_review}},
         ]
       }
     ]
