@@ -54,12 +54,11 @@ function run() {
     if (film) {
       li.innerHTML = `<strong>${film.title}</strong>: ${review}`;
       ul.append(li);
+      // clear text input after adding
+      document.querySelector("#review").value = "";
     } else {
       window.alert("Please select a movie first");
     }
-
-    // clear text input after adding
-    document.querySelector("#review").value = "";
   });
 
   // Add functionality to reset reviews button
