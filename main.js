@@ -79,6 +79,32 @@ function handleResetReviews() {
   });
 }
 handleResetReviews();
+
+function handleShowPeople() {
+  const peopleUrl = "https://ghibliapi.herokuapp.com/people";
+  const showPeopleBtn = document.querySelector("#show-people");
+  showPeopleBtn.addEventListener("click", () => {
+    //get all the people, filter people by current movid id
+    fetch(peopleUrl)
+      .then((res) => res.json())
+      .then((allPeople) => {
+        console.log("allPeople", allPeople);
+        const filmID = select.value;
+        console.log(filmID);
+        const filteredPeople = allPeople.filter((person) =>
+          person.films.some((film) => film.split("/").slice(-1)[0] == filmID)
+        );
+        console.log(filteredPeople);
+        const peopleList = document.querySelector("#peopleList");
+        for (let person of filteredPeople) {
+          const li = document.createElement("li");
+          li.textContent = person.name;
+          peopleList.append(li);
+        }
+      });
+  });
+}
+handleShowPeople();
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
 // So that testing can work as expected for now
 // A non-hacky solution is being researched
