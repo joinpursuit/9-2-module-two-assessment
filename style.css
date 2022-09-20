@@ -1,0 +1,11 @@
+body {
+    background-color: lavender;
+    font-family: monospace;
+}
+
+@media (max-width: 500px) {
+    
+    #reviews{
+      display: none;
+    }
+  }
