@@ -32,7 +32,7 @@ fetch(`${studioApi}films`)
             display.innerHTML = "";
             const movieTitle = document.createElement("h3");
   
-            h3.textContent = `${res[i].title}`;
+            movieTitle.textContent = `${res[i].title}`;
   
             const releaseDate = document.createElement("p");
             releaseDate.textContent = `${res[i].release_date}`;
@@ -45,17 +45,16 @@ fetch(`${studioApi}films`)
         });
       }
 
-      const form = document.querySelector("#form");
+      const form = document.querySelector("form");
+      const review = document.querySelector("#review");
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
       console.log(event);
       if (titles.value === "") {
-        alert("Please select a movie first ");
+        alert("Please select a movie first");
       } else {
-        const review = document.querySelector("#review");
-
         let film = res.find((film) => {
           return film.id === titles.value;
         });
@@ -64,7 +63,7 @@ fetch(`${studioApi}films`)
         const ul = document.querySelector("ul");
         const li = document.createElement("li");
         li.textContent = "";
-        li.innerHTML = `<strong>${film.title}</strong>: ${review.value}`;
+        li.innerHTML = `<strong>${film.title}:</strong> ${review.value}`;
         ul.append(li);
         form.reset();
       }
