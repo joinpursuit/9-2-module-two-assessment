@@ -1,0 +1,71 @@
+header { 
+    width:75%;
+    background-color: skyblue;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+    box-sizing: border-box
+    
+}
+.header-title { 
+    position: fixed;
+    top:0;
+    right:248px;
+    
+}
+
+body {
+    align-items: center;
+    font-family: monospace;
+}
+
+section#reviews {
+    display: block;
+}
+
+main {
+    align-items: center;
+
+}
+section {
+    display: block;
+}
+
+.ghibli-logo{
+    height:100%;
+     display:block;
+}
+
+#img{
+    width: 20%;
+    height:fit-content;
+}
+
+
+
+h1{
+    font-family: monospace;
+    top:-16px;
+    right: -706px;
+    font-size: 40px;
+    position:relative;
+}
+
+h2 {
+    font-family: monospace;
+}
+
+.search-grid{
+    display:grid;
+    grid-template-columns:15%;
+}
+
+
+.submit {
+    border-radius: 5px;
+}
+button {
+    border-radius: 5px;
+}
+
+
