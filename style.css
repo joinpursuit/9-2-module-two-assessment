@@ -1,12 +1,28 @@
 body {
     background-color: rgb(230, 230, 250);
     font-family: monospace;
-    
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 12.5%;
+    padding-top: none;
 }
 
-header {
-    width: 75%;
+header{
+    width: 75vw;
     background-color: skyblue;
+}
+
+#header {
+    position: absolute;
+    right: 200px;
+    top: 10px;
+    border: bold;
+    /* right: 0px; */
+}
+
+header img{
+    width: 80%;
+    height: 40vh;
 }
 
 
