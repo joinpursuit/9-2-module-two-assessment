@@ -97,7 +97,11 @@ function rendertext(event){
     // titleIDARRAY[this.options.selectedIndex].title
 
 // console.log(titleIDARRAY[this.options.selectedIndex-1].title)
+// console.log(titleIDARRAY[this.options.selectedIndex-1])
+// console.log(event.target)
 reviewtitleARR.push(titleIDARRAY[this.options.selectedIndex-1].title)
+// reviewtitleARR.push(event.target.value)
+// console.log(titleIDARRAY)
     // let h3 = document.createElement("h3");
 h3.textContent=""
 ptag1.textContent=""
@@ -112,7 +116,7 @@ oltag.textContent=""
     document.getElementById("display-info").appendChild(h3)
     document.getElementById("display-info").appendChild(ptag1)
     document.getElementById("display-info").appendChild(ptag2)
-    console.log(reviewtitleARR)
+    // console.log(reviewtitleARR)
     // peoplepopulationID=[]
     peoplepopulationID.push(titleIDARRAY[this.options.selectedIndex-1].people)
     moviename.push(titleIDARRAY[this.options.selectedIndex-1].people)
@@ -120,7 +124,7 @@ oltag.textContent=""
         
             // console.log(peoplepopulationID)
 
-console.log(peoplepopulationID)
+// console.log(peoplepopulationID)
 
 }
 
@@ -163,7 +167,7 @@ let formrev = document.getElementById("form")
 let button = document.getElementById("button")
 formrev.addEventListener("submit",reviews)
 
-div.textContent = ""
+// div.textContent = ""
 
 
 
@@ -184,6 +188,7 @@ resetreviews.addEventListener("click",deleteallreviews)
 function peopleGENERATOR(event) {
 event.preventDefault()
 // oltag.innerHTML=""
+// div.textContent = ""
 
 // console.log(peoplepopulationID)
 // let peeps77 = peoplepopulationID[peoplepopulationID.length-1];
