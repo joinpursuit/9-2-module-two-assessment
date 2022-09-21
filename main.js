@@ -65,6 +65,14 @@ function run() {
 
         ul.append(li);
       });
+
+      // Reset reviews button.
+
+      const reset = document.querySelector("#reset-reviews");
+
+      reset.addEventListener("click", (event) => {
+        ul.remove();
+      });
     });
 }
 
