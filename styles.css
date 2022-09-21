@@ -29,7 +29,7 @@ main{
     grid-template-rows: repeat(5, 1fr);
 
 }
-ul{
+#reviews{
     display:block;
 }
 
@@ -54,7 +54,7 @@ ul{
 
 
 @media (max-width: 500px) {
-ul {
+    #reviews {
     display:none
 }
 }

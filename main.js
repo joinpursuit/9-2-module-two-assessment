@@ -8,11 +8,16 @@
 
 function run() {
 let form = document.getElementById("form")
-        let div = document.createElement("div")
+        let div = document.createElement("div");
 form.after(div)
+let oltag = document.querySelector("ol")
+
  // Add code you want to run on page load here
 let titleIDARRAY =[]
 let reviewtitleARR=[]
+
+let peoplepopulationID = []
+moviename = [] //this will push the film characters inside url
 let apiFETCH = "https://ghibliapi.herokuapp.com/films/"
 
  let result = fetch(apiFETCH)
@@ -33,7 +38,7 @@ let titleselect = document.querySelector("#titles-select")
 // for(let element of data){
 // function titleSELECTOR(event){
 //     event.preventDefault()
-// let h3 = document.createElement("h3");
+// let h3 = docddument.createElement("h3");
 // h3.textContent = `${element.title}`
 // let ptag1 = docuemnt.createElement("p")
 // ptag1.textContent = `${element.release_date}`
@@ -79,13 +84,14 @@ function rendertext(event){
 
     event.preventDefault();
 
-
     titleIDARRAY=[]
 // console.log(displayinfo)
 
     // console.log(this.options.selectedIndex-1)
     for (element of data){
         titleIDARRAY.push(element)
+        // peoplepopulationID.push(element.people)
+
     // titleIDARRAY[this.options.selectedIndex.id]
     }
     // titleIDARRAY[this.options.selectedIndex].title
@@ -96,14 +102,26 @@ reviewtitleARR.push(titleIDARRAY[this.options.selectedIndex-1].title)
 h3.textContent=""
 ptag1.textContent=""
 ptag2.textContent=""
+oltag.textContent=""
     h3.textContent = `${titleIDARRAY[this.options.selectedIndex-1].title
     }`
     // let ptag1 = document.createElement("p")
     ptag1.textContent = `${titleIDARRAY[this.options.selectedIndex-1].release_date}`
     // let ptag2 = document.createElement("p")
     ptag2.textContent=`${titleIDARRAY[this.options.selectedIndex-1].description}`
-    sectionC.append(h3,ptag1,ptag2)
+    document.getElementById("display-info").appendChild(h3)
+    document.getElementById("display-info").appendChild(ptag1)
+    document.getElementById("display-info").appendChild(ptag2)
     console.log(reviewtitleARR)
+    // peoplepopulationID=[]
+    peoplepopulationID.push(titleIDARRAY[this.options.selectedIndex-1].people)
+    moviename.push(titleIDARRAY[this.options.selectedIndex-1].people)
+            // peoplepopulationID.push(titleIDARRAY[this.options.selectedIndex-1].people)
+        
+            // console.log(peoplepopulationID)
+
+console.log(peoplepopulationID)
+
 }
 
 
@@ -119,11 +137,15 @@ function reviews(event){
  let dropdown = document.getElementById("titles-select")
 if(dropdown.selectedIndex===0){
 div.innerText = "Please select a movie first"
+document.getElementById("form").reset()
+
 }
 else{
     div.innerText = ""
 let ul = document.querySelector("ul")
-ul.innerHTML += `<li><strong>${reviewtitleARR[reviewtitleARR.length-1]}</strong>: ${reviewinnertext.value}</li>`
+ul.innerHTML += `<li><strong>${reviewtitleARR[reviewtitleARR.length-1]}:</strong> ${reviewinnertext.value}</li>`
+document.getElementById("form").reset()
+
 }
 // let ul = document.querySelector("ul")
 // let reviewv = document.querySelector("#review")
@@ -155,39 +177,49 @@ let resetreviews = document.querySelector("#reset-reviews")
 resetreviews.addEventListener("click",deleteallreviews)
 
 })
+// let oltag = document.querySelector("ol")
+    // let peoplepop = titleIDARRAY[titleIDARRAY.length-1]
 
-    let oltag = document.querySelector("ol")
-
+    // console.log(titleselectionFUNC())
 function peopleGENERATOR(event) {
 event.preventDefault()
-fetch('https://ghibliapi.herokuapp.com/people/').then((response3) => response3.json()).then((data3) => {
-    oltag.innerHTML=""
-    for(let i=0;i<data3.length;i++){
-    oltag.innerHTML+=`<li>${data3[i].name}</li>`
-}
+// oltag.innerHTML=""
+
+// console.log(peoplepopulationID)
+// let peeps77 = peoplepopulationID[peoplepopulationID.length-1];
+// for (let i =0;i<peeps77.length;i++){
+    // for(let z=0;z<peeps77.length;z++)
+    // let peopleid = 
+    // let fetch ="https://ghibliapi.herokuapp.com/people/"
+fetch("https://ghibliapi.herokuapp.com/people/").then((response3) => response3.json()).then((data3) => {
+
+for (element of data3){
+    for(elem of moviename[moviename.length-1]){
+if(element.url===(elem)){
+oltag.innerHTML+=`<li>${element.name}</li>`
+}}}
+
+    // for(let i=0;i<data3.length;i++){
+    
+// }
 }).catch((error) => {
+    // oltag.innerHTML="select a movie"
+
     console.log(error)
   }) 
 }
-
 let peoplebutton = document.getElementById("show-people")
 
 peoplebutton.addEventListener("click",peopleGENERATOR)
 
-
-
+    
 
 
 
 
 
 result.catch((error) => {
-    // let reviewinnertext = document.getElementById("review")
-    // let formrev = document.getElementById("form")
-
-//     formrev.after(div);
-// div.textContent = ""
-// div.innerText = "Please select a movie first"
+    
 
     console.log(error)
   }) 
