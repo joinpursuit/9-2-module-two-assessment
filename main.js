@@ -74,6 +74,8 @@ function run() {
       reset.addEventListener("click", (event) => {
         event.preventDefault();
 
+        const ul = document.querySelector("#review ul");
+
         ul.remove();
       });
 
