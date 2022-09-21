@@ -8,10 +8,10 @@ function run() {
   const reviewsList = document.getElementById("reviews-list");
   const resetReviews = document.getElementById("reset-reviews");
   const peopleList = document.getElementById("people-list");
+  const peopleButton = document.getElementById("show-people");
 
   fetch("https://ghibliapi.herokuapp.com/films")
     .then((event) => {
-      // console.log(event.json());
       return event.json();
     })
     .then((filmJson) => {
@@ -22,7 +22,24 @@ function run() {
 
       titleDropdown.addEventListener("change", (event) => {
         genr8MovieDesc(event.target.value);
-        genr8People(event.target.value);
+      });
+
+      peopleButton.addEventListener("click", (event) => {
+        fetch("https://ghibliapi.herokuapp.com/people")
+          .then((event) => {
+            return event.json();
+          })
+          .then((event) => {
+            for (let person of event) {
+              for (let film of person.films) {
+                if (film.includes(titleDropdown.value)) {
+                  const personName = document.createElement("li");
+                  personName.innerText = person.name;
+                  peopleList.append(personName);
+                }
+              }
+            }
+          });
       });
 
       reviewForm.addEventListener("submit", (event) => {
@@ -48,7 +65,6 @@ function run() {
       resetReviews.addEventListener("click", (event) => {
         reviewsList.innerHTML = "";
       });
-
     });
 
   function populateOptions(filmArr) {
@@ -78,22 +94,15 @@ function run() {
   }
 
   function genr8People(filmID) {
-    // reviewsList.style.visibility = "hidden";
     if (!filmID) {
-        peopleList.innerHTML = "";
+      peopleList.innerHTML = "";
     } else {
-      fetch(`https://ghibliapi.herokuapp.com/people`)
+      fetch(`https://ghibliapi.herokuapp.com/films/${filmID}`)
         .then((event) => {
           return event.json();
         })
         .then((event) => {
-          for (let person of event) {
-            if (person.films[0].includes(filmID)) {
-                const personName = document.createElement('li');
-                personName.textContent = person.name;
-                peopleList.append(personName);
-            }
-          }
+          console.log(event);
         });
     }
   }
