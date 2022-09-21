@@ -1,0 +1,12 @@
+body {
+  background-color: lavender;
+  font-family: monospace;
+}
+header {
+  background-color: skyblue;
+}
+@media (max-width: 499px) {
+  #reviews {
+    display: none;
+  }
+}
