@@ -25,8 +25,10 @@ function run() {
       titles.addEventListener("change", (event) => {
         event.preventDefault();
 
+        const displayInfo = document.querySelector("#display-info");
+
         const displayTitles = document.querySelector("#display-info h3");
-        displayTitles.textContent = `${event.target.textContent}`;
+        displayTitles.textContent = `${event.target.title}`;
 
         const released = document.querySelector("p");
 
@@ -35,9 +37,34 @@ function run() {
         const description = document.querySelector("p:nth-child(2)");
 
         description.textContent = `${event.target.description}`;
+
+        displayInfo.append(displayTitles, released, description);
       });
 
       // Add reviews.
+
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // If no movie selected, error submitting review.
+
+        if (!titles.length) {
+          alert("Please select a movie first");
+        }
+
+        const review = document.querySelector("#review");
+        const ul = document.createElement("ul");
+        const li = document.createElement("li");
+
+        review.append(ul);
+
+        li.textContent =
+          `<strong>${displayTitles}: </strong> ` + event.target.review.value;
+
+        ul.append(li);
+      });
     });
 }
 
