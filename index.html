@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <img src ="./images/ghibli-logo.png" alt="Ghibli logo" class="main-img">
+        <h1>Ghibli Review App</h1>
+    </header>
+    <main>
+        <section>
+            <h2>
+                Select a movie
+            </h2>
+            <select id="titles">
+                <option value='' hidden></option>
+            <!-- Movie titles -->
+            <!--option (blank, no value), will be populated with movie titles from the API -->
+            </select>
+        </section>
+        <section>
+            <!-- Reviews are managed by ourselves locally -->
+            <h2>
+                Add a review
+            </h2>
+            <form class="form-submit">
+                <label for="review">
+                    Your review
+                </label>
+                <!-- type text -->
+                <input id="review" type="text" />
+
+                <!-- type submit -->
+                <input type="submit" />
+            </form>
+        </section>
+        <section>
+            <h2>
+                Movie details
+            </h2>
+            <div id="display-info">
+                <!-- Movie details provided by the api -->
+                <!--starts empty, will be populated with h3 and two p elements, when a movie is selected -->
+            </div>
+        </section>
+        <section>
+            <h2>People</h2>
+            <ol class="ol-list">
+                <!-- People comes from API -->
+                <!--starts empty, will be populated with li as people names are added -->
+            </ol>
+            <button id="show-people">
+                Show People
+            </button>
+
+            <section id="reviews">
+                <h2>
+                    Reviews 
+                </h2>
+                <ul class="list-reviews">
+                    <!-- SHOW REVIEWS -->
+                    <!-- starts empty, will be populated with li as reviews are added -->
+                </ul>
+                <button id="reset-reviews">
+                    Reset Reviews 
+                </button>
+            </section>
+
+        </section>
+        
+    </main>
+<script src="main.js"></script>
+</html>

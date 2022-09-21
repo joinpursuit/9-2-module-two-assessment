@@ -1,0 +1,29 @@
+body{
+    background-color: lavender;
+    font-family: monospace;
+}
+
+.app-header{
+    width: 75%;
+    background-color: skyblue;
+    margin-inline: auto;
+}
+
+.main-img{
+    width: 100%;
+    height: 100%;
+}
+
+#reviews{
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 499px) {
+    #reviews {
+        display: none
+    }
+}
