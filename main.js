@@ -20,6 +20,7 @@ fetch("https://ghibliapi.herokuapp.com/films")
     selectElement.addEventListener("change", (event) => {
       selected = event.target.value;
       console.log(selected);
+      document.querySelector("ol").innerHTML=""
       for (let film of films) {
         if (selected === film.id) {
           filmName = film.title;
