@@ -61,7 +61,8 @@ function run() {
         review.append(ul);
 
         li.textContent =
-          `<strong>${displayTitles}: </strong> ` + event.target.review.value;
+          `<strong>${displayTitles}: </strong> ` +
+          `${event.target.review.value}`;
 
         ul.append(li);
       });
