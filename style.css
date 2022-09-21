@@ -3,6 +3,17 @@ body {
     font-family: monospace;
 }
 
+header {
+    width: 75vw;
+    background: skyblue;
+}
+
+header img{
+    width: 80%;
+    height: 40vh;
+}
+
+
 @media only screen and (max-width: 500px) {
     #reviews{
         display: none;
