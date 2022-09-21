@@ -1,0 +1,60 @@
+body {
+    background-color: lavender;
+    font-family: monospace;
+    margin: 70px;
+}
+
+header{
+    background-color: skyblue;
+    margin:auto;
+    /* grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr 1fr ; */
+    
+}
+
+img{
+text-align: left;
+width:300px;
+height:auto;}
+
+.y{
+    text-align: right;
+}
+
+/* MAIN GRID  */
+
+main{
+
+    display:grid;
+    grid-template-rows: repeat(5, 1fr);
+
+}
+#reviews{
+    display:block;
+}
+
+.a {
+    grid-area: 1/1/2/2;
+}
+
+.b{
+    grid-area: 2/1/3/2;
+}
+
+.c{
+ grid-area: 3/1/4/2;
+}
+.d{
+    grid-area: 4/1/5/2;
+}
+.e{
+   grid-area: 5/1/6/2;
+}
+/* MAIN gRID */
+
+
+@media (max-width: 500px) {
+    #reviews {
+    display:none
+}
+}
