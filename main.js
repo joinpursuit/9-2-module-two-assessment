@@ -14,11 +14,30 @@ function run() {
 
       for (let i = 0; i < json.length; i++) {
         const option = document.createElement("option");
-        const { id, title } = json[i];
+        const { id, title, release_date, description } = json[i];
         option.value = id;
         option.textContent = title;
         titles.append(option);
       }
+
+      // Change movie description when a movie is selected.
+
+      titles.addEventListener("change", (event) => {
+        event.preventDefault();
+
+        const displayTitles = document.querySelector("#display-info h3");
+        displayTitles.textContent = `${event.target.textContent}`;
+
+        const released = document.querySelector("p");
+
+        released.textContent = `${event.target.released_date}`;
+
+        const description = document.querySelector("p:nth-child(2)");
+
+        description.textContent = `${event.target.description}`;
+      });
+
+      // Add reviews.
     });
 }
 
