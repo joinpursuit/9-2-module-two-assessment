@@ -6,23 +6,25 @@
 
 function run() {
  // Add code you want to run on page load here
- const baseUrl = "https://ghibliapi.herokuapp.com/films"
+ const baseUrl = "https://ghibliapi.herokuapp.com/films/"
 const titleId = document.querySelector("#titles")
 const form = document.querySelector("form")
+const ol = document.querySelector("ol")
 const ul = document.querySelector("ul")
 const resetReview = document.querySelector("#reset-reviews")
+const showPeopleButton = document.querySelector("#show-people")
  
 fetch(baseUrl)
 .then((resp) => resp.json())
 .then((films) => {
-    console.log(films)
+    
 //select menu
     for(let f of films){
         const optionElement = document.createElement("option")
         optionElement.setAttribute("value", `${f.id}`)
-        // console.log(optionElement.value)
+        
         optionElement.textContent = `${f.title}`
-        // console.log(f.title)
+      
         titleId.append(optionElement)
 
     }
@@ -40,18 +42,19 @@ titleId.addEventListener("change", (e) => {
 
 const div = document.querySelector("#display-info");
 div.innerHTML = "";
-
+// this is to clear out people section after each "change" from selected movie 
+ol.innerHTML = "";
     for(let d  of films){
         if(d.id === titleId.value) {
             const h3 = document.createElement("h3");
             const pYrTag = document.createElement("p");
             const descripPTag = document.createElement("p");
             h3.textContent = d.title;
-            // console.log(d.title)
+          
             pYrTag.textContent = d.release_date;
-            // console.log(d.release_date)
+           
             descripPTag.textContent = d.description;
-            // console.log(d.description)
+            
             div.append(h3);
             div.append(pYrTag);
             div.append(descripPTag)
@@ -70,21 +73,57 @@ e.preventDefault();
 fetch(baseUrl)
 .then((resp) => resp.json())
 .then((films) => {
-    for(let r of films) {
-        if(r.id === titleId.value){
-            const liElement = document.createElement("li")
-            const review_details = e.target.review.value
-           liElement.innerHTML = `<strong>${r.title}</strong> ${review_details}`;
-            ul.append(liElement);
-        } else {
-            alert("Please select a movie first")
-        }
-       form.reset();
-        } 
-
+    if(!titleId.value){
+        alert("Please select a movie first")
+    } else{
+        for(let r of films) {
+            if(r.id === titleId.value){
+                const liElement = document.createElement("li")
+                const reviewInput = e.target.review.value
+                
+               liElement.innerHTML =  `<strong>${r.title}:</strong> ${reviewInput}`;
+                ul.append(liElement);
+                form.reset(); // clears out the input in the add a review section after each submit.
+            } 
+            } 
+    }
+    
+       
 });
 });
 
+//reset button functionality 
+resetReview.addEventListener("click", e => {
+    e.preventDefault()
+    ul.innerHTML = ""
+});
+
+//show people
+showPeopleButton.addEventListener("click", (e) => {
+    e.preventDefault();
+const peopleId = "https://ghibliapi.herokuapp.com/people"
+    fetch(peopleId)
+    .then((resp) => resp.json())
+    .then((pepData) => {
+       
+let people = [];
+
+for(let p of pepData){
+    if(p.films.includes(baseUrl + titleId.value)) {
+        people.push(p.name)
+       
+    }
+}
+
+for(let ppl of people) {
+    const liPepNames = document.createElement("li");
+        liPepNames.innerHTML = ppl; // using innerHTML to populate people names in an ol 
+        ol.append(liPepNames);
+}
+       
+    });
+});
+   
 
 
 }                                          
