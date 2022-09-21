@@ -25,7 +25,7 @@ function run() {
     const h3 = document.createElement("h3");
     const p = document.createElement("p");
     const p2 = document.createElement("p");
-    let people = document.createElement("li");
+    let li = document.createElement("li");
     
     
 
@@ -84,7 +84,7 @@ function run() {
                 if(y.id === titles.value) {
                 const review = event.target.review.value;
                 const li = document.createElement("li");
-                li.innerHTML = `<strong>${y.title}:</strong> ${addReview}`;
+                li.innerHTML = `<strong>${y.title}:</strong> ${review}`;
                 ul.append(li);
                 formReview.reset();
                     };
@@ -102,16 +102,23 @@ function run() {
     // Get people
     btnPeople.addEventListener("click", event => {
         event.preventDefault();
-       
-        fetch("https://ghibliapi.herokuapp.com/people")
+       const selectPerson = "https://ghibliapi.herokuapp.com/people"
+       const target = event.target.value
+       const array =[]
+        fetch(selectPerson)
             .then((response) => response.json())
             .then ((json) => {
             
-                let person = [];
-                json.forEach((names) => {
-                    people.innerHTML = names.name;
-                    ol.append(people);
-                })
+            ol.innerHTML = "";
+            for (let name of json) {
+                for (let z of name.films) {
+                    if (z ===  `${url}${target}`) {
+                        li.textContent = z.name;
+                        ol.append(li);
+                    }
+                }
+            }    
+                 
             })
             .catch((error) => {
                 console.log(error)
