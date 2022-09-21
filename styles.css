@@ -1,0 +1,43 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background-color: lavender;
+  font-family: monospace;
+}
+
+header {
+  width: 75%;
+  background-color: skyblue;
+  height: 150px;
+  margin: 0 auto;
+  margin-top: 10px;
+  position: relative;
+}
+
+.ghibli-logo {
+  height: 100%;
+  display: block;
+}
+
+.header-title {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+section {
+  width: 75%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 500px) {
+  #reviews {
+    display: none;
+  }
+}
