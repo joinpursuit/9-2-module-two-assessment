@@ -72,7 +72,20 @@ function run() {
       const reset = document.querySelector("#reset-reviews");
 
       reset.addEventListener("click", (event) => {
+        event.preventDefault();
+
         ul.remove();
+      });
+
+      // Show people when button is clicked.
+
+      const people = document.querySelector("#show-people");
+
+      people.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const ol = document.createElement("ol");
+        const li = document.createElement("li");
       });
     });
 }
