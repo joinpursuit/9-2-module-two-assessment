@@ -9,14 +9,13 @@
     </head>
     <header>
         <div>
-            <img src="images/ghibli-logo.png" width=300px/> 
+            <img src="./images/ghibli-logo.png" alt="Ghibli logo"/ width="369" height="175";> 
             <h1 class="header-title">Ghibli Review App</h1>
         </div>
     </header>
 
-    <body style="background-color:lavender;">
+    <body style="background-color:lavender;"> 
     <main>
-            
         <section class="search-grid">
             <h2>Select a movie</h2>
             <select id="titles">
@@ -29,12 +28,12 @@
             <form>
                 <label for="review">Your review</label>
                 <input id="review" type="text" />
-                <input type="submit" />
+                <input type="submit" /> 
             </form>
         </section>
         
         <section>
-            <h2>Movie review</h2>
+            <h2>Movie details</h2>
             <div id="display-info"></div>
         </section>
        
@@ -43,15 +42,15 @@
             <ol>
 
             </ol>
-            <button id="show-people" type="text">Show people</button>
+            <button id="show-people">Show People</button>
         </section>
         
-        <section>
+        <section id="reviews">
             <h2>Reviews</h2>
             <ul>
-                
+              <!-- starts empty will be populated with li as reviews are added  -->
             </ul>
-            <button id="reset-reviews" type+"text">Reset Reviews</button>
+            <button id="reset-reviews">Reset Reviews</button>
         </section>
     </main>
     </body>

@@ -1,11 +1,11 @@
 header { 
     width:75%;
     background-color: skyblue;
-    height: 200px;
-    height: 180px;
+    display: flex;
     margin: 0 auto;
     margin-top: 20px;
     box-sizing: border-box
+    
 }
 .header-title { 
     position: fixed;
@@ -14,9 +14,31 @@ header {
     
 }
 
+body {
+    align-items: center;
+    font-family: monospace;
+}
+
+section#reviews {
+    display: block;
+}
+
+main {
+    align-items: center;
+
+}
+section {
+    display: block;
+}
+
 .ghibli-logo{
     height:100%;
      display:block;
+}
+
+#img{
+    width: 20%;
+    height:fit-content;
 }
 
 
@@ -46,9 +68,4 @@ button {
     border-radius: 5px;
 }
 
-@media screen and (max-width: 500px) {
-    #reviews {
-        display: none;
-    }
-}
 
