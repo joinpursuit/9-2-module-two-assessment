@@ -1,0 +1,23 @@
+body {
+
+background-color: lavender;
+font-family: monospace;
+
+}
+
+header {
+
+background-color: skyblue;
+width: 75%;
+}
+
+@media only screen and (max-width: 500px){
+#reviews{
+    display: none;
+}
+}
+
+img {
+display: flex;
+    height: 25%;
+}
