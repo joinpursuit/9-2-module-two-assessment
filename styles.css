@@ -1,0 +1,35 @@
+body{
+    background-color: lavender;
+    font-family: monospace;
+    display: grid;
+    grid-template-columns: repeat(8,1fr)
+   
+}
+
+@media (max-width:500px){
+    #reviews{
+        display:none;
+    }
+
+    
+}
+header{
+    /* width: 75%; */
+    display: grid;
+    background-color: lightblue;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 2/8;
+   
+}
+img{
+    width:75%;
+   
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-column:3/7;
+}
+h1{
+    text-align: end;
+}
