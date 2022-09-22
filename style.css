@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(230, 230, 250);
+    font-family: monospace;
+    width: 75%;
+    margin: 0 auto;
+    /* margin-right: auto; */
+    /* padding-left: 12.5%; */
+    /* padding-top: none; */
+}
+
+header{
+    width: 75vw;
+    background-color: skyblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40px;
+}
+
+#header {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    border: bold;
+    right: 10%;
+}
+
+header img{
+    width: 35%;
+    height: auto;
+}
+
+
+/* Media Queries */
+@media (max-width: 500px) {
+    section#reviews {
+        display: none;
+    }
+}
