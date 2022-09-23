@@ -16,18 +16,18 @@ fetch(films)
     .then(response => response.json())
     .then(display)
 
-function display(json) {
+function display(json, j, userSelected) {
   const select = document.querySelector("#titles");
   const display = document.querySelector("#display-info")
  
   select.addEventListener("change", (event) => {
     event.preventDefault();
-    const userSelected = event.target.value;
+   userSelected = event.target.value;
     console.log(userSelected)
     display.textContent = ""
     const title = document.createElement("h3")
     title.textContent = `${userSelected}`
-      let j = json.find(m => m.title ===  userSelected)
+      j = json.find(m => m.title ===  userSelected)
   console.log(j)
 const releaseYear = document.createElement("p")
 const description = document.createElement("p")
@@ -41,17 +41,17 @@ releaseYear.textContent = j.release_date
 
 
 
-function getReview(json) {
+function getReview(j) {
+ 
   const review = document.querySelector("#review")
   review.addEventListener("submit", (event) => {
 event.preventDefault()
-    const userValue = event.target.value
-  const ol = document.createElement("ol")
-    let j = json.find(m => m.title === userValue)
-    ol += `<li><strong>${j.title}</strong></li>
-    <li>${userValue}</li>`
-    review.append(ol)
-    review.reset()
+const reviewValue = event.target.value;
+const li = document.createElement("li");
+li.innerHTML = `<strong>${j}:</strong> ${reviewValue}`
+
+    document.querySelector("#reviews ul").append(li)
+    event.target.reset();
   })
 }
 
@@ -66,6 +66,14 @@ function run() {
   fetch(films)
     .then((response) => response.json())
     .then(selectionMenu,display,getReview);
+
+
+
+
+
+
+
+
 }
 
 // This function will "pause" the functionality expected on load long enough to allow Cypress to fully load
