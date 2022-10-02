@@ -26,6 +26,7 @@ function run() {
         event.preventDefault();
 
         const displayInfo = document.querySelector("#display-info");
+        displayInfo.innerHTML = "";
 
         const displayTitles = document.querySelector("#display-info h3");
         displayTitles.textContent = `${event.target.title}`;
